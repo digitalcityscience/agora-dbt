@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: int_parcel_building_list
+    description: "Lists building IDs within each parcel"
+    columns:
+      - name: id
+        description: "Parcel ID"
+      - name: building_list
+        description: "List of building IDs within the parcel"
+  - name: int_parcel_grz_value
+    description: "Calculates GRZ value for each parcel"
+    columns:
+      - name: parcel_id
+        description: "Parcel ID"
+      - name: grz_value
+        description: "GRZ value of the parcel"

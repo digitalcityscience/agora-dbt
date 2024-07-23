@@ -1,0 +1,16 @@
+version: "3"
+services:
+  db:
+    image: postgis/postgis:13-3.1
+    container_name: agora_postgis
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_DB: agora
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

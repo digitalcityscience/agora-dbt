@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: public # This should match the schema name where your tables are located
+    tables:
+      - name: alkis_parcels
+      - name: alkis_buildings

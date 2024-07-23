@@ -1,0 +1,29 @@
+[0m09:55:03.420019 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b8c94ed70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b8a7ba440>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b8a7bbdf0>]}
+
+
+============================== 09:55:03.427047 | 18a4f55e-ead7-439a-8556-caae58e56d64 ==============================
+[0m09:55:03.427047 [info ] [MainThread]: Running with dbt=1.8.4
+[0m09:55:03.427346 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': 'logs', 'profiles_dir': '/home/akif/.dbt', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt init agora_dbt', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m09:55:03.443157 [debug] [MainThread]: Starter project path: /home/akif/.cache/pypoetry/virtualenvs/dbt-agora-L_hINThD-py3.10/lib/python3.10/site-packages/dbt/include/starter_project
+[0m09:55:03.444058 [info ] [MainThread]: 
+Your new dbt project "agora_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m09:55:03.444294 [info ] [MainThread]: Setting up your profile.
+[0m09:56:06.169232 [info ] [MainThread]: Profile agora_dbt written to /home/akif/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m09:56:06.171412 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 62.773724, "process_user_time": 1.047929, "process_kernel_time": 0.052126, "process_mem_max_rss": "92772", "process_out_blocks": "23416", "process_in_blocks": "0"}
+[0m09:56:06.172919 [debug] [MainThread]: Command `dbt init` succeeded at 09:56:06.172689 after 62.78 seconds
+[0m09:56:06.173895 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b8c94ed70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b8ae86f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b8a83d5d0>]}
+[0m09:56:06.174831 [debug] [MainThread]: Flushing usage events

@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: alkis_parcel_grz
+    description: "Calculates GRZ value for each parcel"
+    columns:
+      - name: id
+        description: "Parcel ID"
+        constraints:
+          - type: not_null
+          - type: primary_key
+        data_tests:
+          - unique
+      # - name: grz_value
+      #   description: "Calculated GRZ value (total building area divided by parcel area)"
+      #   tests:
+      #     - not_null

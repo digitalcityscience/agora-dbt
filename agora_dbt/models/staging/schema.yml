@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_building_center_points
+    description: "Adds center_point to the building table"
+    columns:
+      - name: id
+        description: "Building ID"
+      - name: center_point
+        description: "Center point of the building"
