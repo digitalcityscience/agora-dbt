@@ -1,0 +1,21 @@
+default:
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: postgres
+      port: 5436
+      dbname: agora
+      schema: public
+      threads: 2
+    prod:
+      type: postgres
+      host: production-db-host
+      user: prod_user
+      password: prod_password
+      port: 5432
+      dbname: prod_agora
+      schema: public
+      threads: 4
+  target: dev

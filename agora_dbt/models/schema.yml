@@ -5,3 +5,4 @@ sources:
     tables:
       - name: alkis_parcels
       - name: alkis_buildings
+      - name: xplannung
