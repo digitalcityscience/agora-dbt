@@ -35,7 +35,7 @@ select p.*,
        g.parcel_area,           -- Include parcel_area from parcel_grz
        g.grz_value,              -- Include grz_value from parcel_grz
        CASE 
-            WHEN p."X_GRZ" IS NOT NULL THEN (p."X_GRZ" / g.grz_value)
+            WHEN p."X_GRZ" IS NOT NULL THEN (p."X_GRZ" - g.grz_value)
             ELSE NULL
         END as "potential_grz"
 from parcels p

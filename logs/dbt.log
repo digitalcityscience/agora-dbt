@@ -27,3 +27,33 @@ Happy modeling!
 [0m09:56:06.172919 [debug] [MainThread]: Command `dbt init` succeeded at 09:56:06.172689 after 62.78 seconds
 [0m09:56:06.173895 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b8c94ed70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b8ae86f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b8a83d5d0>]}
 [0m09:56:06.174831 [debug] [MainThread]: Flushing usage events
+[0m13:18:29.310359 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f28047adde0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2804b0fd90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2804b0fd30>]}
+
+
+============================== 13:18:29.311763 | 40fdc681-f00e-4480-b862-579ebc36748e ==============================
+[0m13:18:29.311763 [info ] [MainThread]: Running with dbt=1.8.4
+[0m13:18:29.312026 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/akif/.dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt docs serve --port 8686', 'send_anonymous_usage_stats': 'True'}
+[0m13:18:29.312264 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/akif/Desktop/HCU/Agora/dbt_agora/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m13:18:29.312944 [debug] [MainThread]: Resource report: {"command_name": "serve", "command_wall_clock_time": 0.025398994, "process_user_time": 0.513262, "process_kernel_time": 0.033113, "process_mem_max_rss": "84812", "process_in_blocks": "31728", "process_out_blocks": "16", "command_success": false}
+[0m13:18:29.313248 [debug] [MainThread]: Command `dbt docs serve` failed at 13:18:29.313181 after 0.03 seconds
+[0m13:18:29.313398 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f28047adde0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2804b0fe20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2804b0fd60>]}
+[0m13:18:29.313562 [debug] [MainThread]: Flushing usage events
+[0m13:33:58.641476 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f97f4891e40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f97f4bffd90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f97f4bffd30>]}
+
+
+============================== 13:33:58.642741 | 3892812f-468b-4f85-a117-74b913cda228 ==============================
+[0m13:33:58.642741 [info ] [MainThread]: Running with dbt=1.8.4
+[0m13:33:58.642967 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': '/home/akif/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m13:33:58.643181 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/akif/Desktop/HCU/Agora/dbt_agora/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m13:33:58.643543 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 0.024595987, "process_user_time": 0.482375, "process_kernel_time": 0.052257, "process_mem_max_rss": "84788", "process_out_blocks": "8", "command_success": false, "process_in_blocks": "0"}
+[0m13:33:58.643776 [debug] [MainThread]: Command `dbt run` failed at 13:33:58.643735 after 0.02 seconds
+[0m13:33:58.643929 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f97f4891e40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f97f4bffe20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f97f4bffd60>]}
+[0m13:33:58.644080 [debug] [MainThread]: Flushing usage events
