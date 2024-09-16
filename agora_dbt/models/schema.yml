@@ -1,7 +1,8 @@
 version: 2
 
 sources:
-  - name: public # This should match the schema name where your tables are located
+   # This should match the schema name where your tables are located
+  - name: "{{ target.schema }}"
     tables:
       - name: alkis_parcels
       - name: alkis_buildings

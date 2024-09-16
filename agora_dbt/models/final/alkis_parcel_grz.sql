@@ -1,7 +1,11 @@
 {{ config(
     materialized='table', 
-    alias='alkis_parcel_grz')
- }}
+    alias='alkis_parcel_grz',
+    post_hook=[
+        'CREATE INDEX IF NOT EXISTS idx_parcel_geom ON {{ ref("parcel_building_list") }} USING GIST(geom)',
+        'CREATE INDEX IF NOT EXISTS idx_building_center_point ON {{ ref("building_center_points") }} USING GIST(center_point)'
+    ]
+) }}
 
 with building_centers as (
     select id, "GRF" as Grundflaeche  -- Ensure case-sensitivity

@@ -1,5 +1,11 @@
--- we can give another name to table with alias
-{{ config(materialized='table', alias='parcel_building_list') }}
+{{ config(
+    materialized='table',
+    alias='parcel_building_list',
+    post_hook=[
+        'CREATE INDEX IF NOT EXISTS idx_parcel_geom ON {{ ref("parcel_xplannug") }} USING GIST(geom)',
+        'CREATE INDEX IF NOT EXISTS idx_building_center_point ON {{ ref("building_center_points") }} USING GIST(center_point)'
+    ]
+) }}
 
 with building_centers as (
     select id, center_point
@@ -21,3 +27,7 @@ select
 from parcels_with_buildings as pb
 join {{ ref('parcel_xplannug') }} as px 
 on pb.id = px.id
+
+
+-- parce_xplannung yani xplan olan parcellerin icine dusen binalari buluyoruz.
+--
