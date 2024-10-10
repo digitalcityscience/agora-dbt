@@ -5,6 +5,8 @@
 dbt docs generate --target dev
 
 dbt docs serve --port 8686
+or
+dbt docs serve --host IP --port 8686
 
 dbt run --target dev or prod
 
@@ -13,7 +15,6 @@ dbt run --target dev or prod
 - calculate the center point of parcel
 - get the xplannung_GRZ from xplan data
 - create potential column within parcel dataset
-
 
 ## Methods
 
@@ -31,7 +32,9 @@ dbt run --target dev or prod
 {% endmacro %}
 
 ```
+
 for model
+
 ```
 -- models/my_model.sql
 
@@ -41,12 +44,12 @@ from {{ get_table_name('source_table') }}
 
 ### Delete dublicate
 
-select *
+select _
 from stage.alkis_parcel_grz apg
 where apg.id IN (
 select id from stage.alkis_parcel_grz
 group by id
-having count(*)=1
+having count(_)=1
 )
 
 - we have a problem in building_list column. It is exported as varchar 255 but somehow it is longer than it. we should check it
