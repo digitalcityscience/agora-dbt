@@ -1,4 +1,7 @@
 # agora-dbt
+This branch contains the initial logic for GRZ calculation performed in 2024. Due to certain shortcomings in this logic, the code has been updated. This branch was created to preserve previous calculations.
+
+Please follow the MAIN branch for the latest updates.
 
 ## For documentation
 
