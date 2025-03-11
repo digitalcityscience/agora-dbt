@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_alkis
+    description: "Staging table for ALKIS data, sourced from ALKIS parcel dataset."
+    columns:
+      - name: UUID
+        description: "Unique identifier for each parcel."
+      - name: ZAE
+        description: "Parcel identifier from ALKIS."
+      - name: Shape_Area
+        description: "Calculated area of the parcel."
+      - name: data_version
+        description: "Date of data extraction, formatted as YYYYMMDD."
+
+  - name: stg_lgb_union
+    description: "Staging table combining multiple LGB datasets into a unified format."
+    columns:
+      - name: flurst
+        description: "LGB identifier for land plots."
+      - name: art
+        description: "LGB classification for property types."
+      - name: typ
+        description: "Detailed type information for LGB properties."
+      - name: data_version
+        description: "Date of data extraction, formatted as YYYYMMDD."
+  - name: stg_nutzung
+    description: "Staging view for Nutzung data, sourced from the Nutzung_Flurstuecke table. This model normalizes the 'nutzart' values by converting them to lowercase and cleaning extra whitespace."
+    columns:
+      - name: oid_1
+        description: "Unique identifier from the Nutzung_Flurstuecke table."
+        tests:
+          - not_null
+      - name: clean_nutzart
+        description: "Normalized land use category (nutzart) after converting to lowercase and trimming extra whitespace."
+        tests:
+          - not_null
+      - name: geom
+        description: "Geometry of the Nutzung area."
