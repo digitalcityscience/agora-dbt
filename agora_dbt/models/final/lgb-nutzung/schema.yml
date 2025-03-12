@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: final_alkis_parcels_lgb_result
+    description: "Final ALKIS parcels dataset enriched with LGB attributes."
+    columns:
+      - name: id
+        description: "Unique identifier for the ALKIS parcel."
+      - name: ZAE
+        description: "ALKIS parcel number."
+      - name: Shape_Area
+        description: "Total area of the parcel."
+      - name: lgb_art
+        description: "Array of unique LGB classifications for each parcel."
+      - name: lgb_typ
+        description: "Array of unique LGB types corresponding to lgb_art."
+      - name: data_version
+        description: "Timestamp of when the dataset was processed."
+
+  - name: final_alkis_nutzung_result
+    description: "Final ALKIS parcels dataset enriched with Nutzung + LGB attributes."
+    columns:
+      - name: id
+        description: "Unique identifier for the ALKIS parcel."
+      - name: ZAE
+        description: "ALKIS parcel number."
+      - name: Shape_Area
+        description: "Total area of the parcel."
+      - name: nutzart_list
+        description: "Array of Nutzung types that intersect with the parcel."
+      - name: data_version
+        description: "Timestamp of when the dataset was processed."

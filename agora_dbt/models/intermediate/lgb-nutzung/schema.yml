@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: int_alkis_lgb_matched
+    description: "Intermediate table matching ALKIS parcels with LGB data based on geometric and attribute relationships."
+    columns:
+      - name: alkis_id
+        description: "Unique identifier for ALKIS parcels."
+        tests:
+          - not_null
+          - unique
+
+      - name: alkis_zae_id
+        description: "ZAE identifier from ALKIS used for matching with LGB."
+
+      - name: alkis_geom
+        description: "Geometry of the ALKIS parcel, validated using ST_MakeValid."
+
+      - name: alkis_area
+        description: "Parcel area in square meters, derived from Shape_Area."
+
+      - name: lgb_art
+        description: "Array of distinct LGB 'art' classifications assigned to the parcel."
+
+      - name: lgb_typ
+        description: "Array of distinct LGB 'typ' classifications assigned to the parcel."
+  - name: int_alkis_nutzung_matched
+    description: "Intermediate table that matches ALKIS parcels with Nutzung areas based on spatial intersections."
+    columns:
+      - name: parcel_uuid
+        description: "Unique identifier for ALKIS parcel."
+      - name: nutzung_id
+        description: "Unique identifier for Nutzung area."
+      - name: intersection_area
+        description: "Area of intersection between ALKIS parcel and Nutzung geometry (in square meters)."
+      - name: parcel_area
+        description: "Total area of the ALKIS parcel."
+      - name: nutzart_values
+        description: "Array of Nutzung categories associated with the parcel."

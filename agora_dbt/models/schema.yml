@@ -4,6 +4,19 @@ sources:
    # This should match the schema name where your tables are located
   - name: "{{ target.schema }}"
     tables:
-      - name: alkis_parcels
-      - name: alkis_buildings
-      - name: xplannung
+      - name: ALKIS_2023_Flurstuecke_Flaechen_parcels
+      - name: parcel_test_west
+      - name: verwaltungsvermoegen_gewaesser
+      - name: landesbetriebe_gem_paragraph_26_lho
+      - name: sonderverm_schulimmobilien
+      - name: agv_ohne_erbbaurecht
+      - name: agv_belastet_mit_erbbaurecht
+      - name: landesbetriebe_gem_paragraph_26_lho_erbbaurecht
+      - name: sonderverm_stadt_und_hafen_hafencity
+      - name: sonderverm_fuer_naturschutz_und_landschaftspflege_svnl
+      - name: sonderverm_stadt_und_hafen_hafencity_belastet_mit_erbbaurecht
+      - name: verwaltungsvermoegen_sonstiges
+      - name: verwaltungsvermoegen_erbbaurecht
+      - name: verw_vermoegen_str_plaetze_wege_deiche
+      - name: grundstuecksgleiche_rechte
+      - name: Nutzung_Flurstuecke

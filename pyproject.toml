@@ -9,6 +9,9 @@ readme = "README.md"
 python = "^3.10"
 dbt-postgres = "^1.8.2"
 dbt = "^1.0.0.38.5"
+jupyter = "^1.1.1"
+lab = "^8.4"
+openpyxl = "^3.1.5"
 
 
 [build-system]

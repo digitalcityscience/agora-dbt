@@ -6,6 +6,7 @@ Try running the following commands:
 - dbt run
 - dbt test
 
+If you change table in dbt sql files please first clean cache with `dbt clean` then run project
 
 ## Materialization Types in DBT
 
