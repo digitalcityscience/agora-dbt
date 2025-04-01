@@ -20,3 +20,11 @@ sources:
       - name: verw_vermoegen_str_plaetze_wege_deiche
       - name: grundstuecksgleiche_rechte
       - name: Nutzung_Flurstuecke
+      - name: POI-Airport
+      - name: POI-BusStop
+      - name: POI-Fire_departments
+      - name: POI-Hospitals
+      - name: POI-Kindergarten
+      - name: POI-Pharmacies
+      - name: POI-Supermarket
+      - name: POI-TrainStation

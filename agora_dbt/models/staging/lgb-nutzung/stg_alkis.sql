@@ -1,6 +1,6 @@
 {{ config(
     alias='stg_alkis',
-    materialized='table'
+    materialized='view'
 ) }}
 
 {% set today_date = var('today_date', modules.datetime.datetime.today().strftime('%Y%m%d')) %}

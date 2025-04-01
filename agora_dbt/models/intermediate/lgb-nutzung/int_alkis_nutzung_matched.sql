@@ -1,5 +1,5 @@
 {{ config(
-    materialized='table',
+    materialized='view',
     alias='int_alkis_nutzung_matched',
 ) }}
 

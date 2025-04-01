@@ -8,6 +8,12 @@ Try running the following commands:
 
 If you change table in dbt sql files please first clean cache with `dbt clean` then run project
 
+dbt run --select some_models --full-refresh
+
+or
+
+dbt run --full-refresh
+
 ## Materialization Types in DBT
 
 DBT supports different materialization types that define how your models are created and stored in the database. Each type has specific use cases, advantages, and disadvantages. Below is a summary:

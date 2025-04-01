@@ -1,5 +1,5 @@
 {{ config(
-    materialized='table',
+    materialized='view',
     alias='final_alkis_parcels_lgb_result',
 ) }}
 
