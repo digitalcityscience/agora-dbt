@@ -6,14 +6,26 @@ models:
     columns:
       - name: id
         description: "Unique identifier for the ALKIS parcel."
+        tests:
+          - unique
+          - not_null
       - name: ZAE
         description: "ALKIS parcel number."
       - name: Shape_Area
         description: "Total area of the parcel."
       - name: lgb_art
         description: "Array of unique LGB classifications for each parcel."
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "array_length(lgb_art, 1) > 0"
+
       - name: lgb_typ
         description: "Array of unique LGB types corresponding to lgb_art."
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "array_length(lgb_typ, 1) > 0"
       - name: data_version
         description: "Timestamp of when the dataset was processed."
 
@@ -28,5 +40,39 @@ models:
         description: "Total area of the parcel."
       - name: nutzart_list
         description: "Array of Nutzung types that intersect with the parcel."
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "array_length(nutzart_list, 1) > 0"
+
+
       - name: data_version
         description: "Timestamp of when the dataset was processed."
+
+  - name: final_parcel_poi_distance
+    description: "Each parcel enriched with nearest POI distances"
+    columns:
+      - name: dist_airport
+        tests:
+          - not_null
+      - name: dist_bus_stop
+        tests:
+          - not_null
+      - name: dist_fire_departments
+        tests:
+          - not_null
+      - name: dist_hospitals
+        tests:
+          - not_null
+      - name: dist_kindergarten
+        tests:
+          - not_null
+      - name: dist_pharmacies
+        tests:
+          - not_null
+      - name: dist_supermarket
+        tests:
+          - not_null
+      - name: dist_train_station
+        tests:
+          - not_null
