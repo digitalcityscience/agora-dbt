@@ -1,6 +1,6 @@
 {{ config(
     materialized='view',
-    alias='final_alkis_parcels_lgb_result',
+    alias='final_alkis_parcels_lgb_result'
 ) }}
 
 WITH 
@@ -11,12 +11,9 @@ lgb_matched AS (
     SELECT * FROM {{ ref('int_alkis_lgb_matched') }}
 )
 SELECT 
-    a.*, -- ALKIS+LGB all columns
+    a.*, 
     m.lgb_art AS lgb_art_values,  
-    m.lgb_typ AS lgb_typ_values   
-FROM 
-    alkis a
-LEFT JOIN 
-    lgb_matched m
-ON 
-    a.id = m.alkis_id
+    m.lgb_typ AS lgb_typ_values
+FROM alkis a
+LEFT JOIN lgb_matched m
+  ON a.id = m.alkis_id

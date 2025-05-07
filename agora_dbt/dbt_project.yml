@@ -7,6 +7,13 @@ version: "1.0.0"
 # This setting configures which "profile" dbt uses for this project.
 profile: "agora_dbt"
 
+vars:
+  alkis_dataset_name: 'ALKIS_2023_Flurstuecke_Flaechen_parcels'
+  building_dataset_name: 'ALKIS_Gebaeude_Bauteile_Flaechen_buildings'
+  xplannung_dataset_name: 'Xplanung_BaugebietsTeilFlaeche'
+  nutzung_dataset_name: 'Nutzung_Flurstuecke'
+
+
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!

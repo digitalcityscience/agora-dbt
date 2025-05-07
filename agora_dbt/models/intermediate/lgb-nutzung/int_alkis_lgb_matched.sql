@@ -1,6 +1,9 @@
 {{ config(
-    materialized='view',
+    materialized='table',
     alias='int_alkis_lgb_matched',
+    post_hook=[
+        "CREATE INDEX IF NOT EXISTS idx_lgb_alkis_id ON {{ this }} (alkis_id)"
+    ]
 ) }}
 
 WITH 
@@ -8,7 +11,7 @@ alkis AS (
     SELECT * FROM {{ ref('stg_alkis') }}
 ),
 lgb AS (
-    SELECT * FROM {{ ref('stg_lgb_union') }} 
+    SELECT * FROM {{ ref('stg_lgb_union') }}
 ),
 intersected_data AS (
     SELECT 
@@ -24,28 +27,27 @@ intersected_data AS (
         a."ZAE" = b.flurst
     WHERE 
         ST_Intersects(ST_MakeValid(a.geom), ST_MakeValid(b.geom))
-        AND ABS(ST_Area(ST_Intersection(ST_MakeValid(a.geom), ST_MakeValid(b.geom))) - a."Shape_Area") <= 20
+        AND ABS(
+            ST_Area(ST_Intersection(ST_MakeValid(a.geom), ST_MakeValid(b.geom))) 
+            - a."Shape_Area"
+        ) <= 20
 ),
 distinct_values AS (
-    -- Her bir alkis_id için benzersiz art ve typ değerlerini ayıkla
     SELECT DISTINCT 
         alkis_id,  
         alkis_zae_id,  
         art,  
         typ  
-    FROM 
-        intersected_data
+    FROM intersected_data
 ),
 matched_parcels AS (
     SELECT 
         alkis_id,  
         alkis_zae_id,  
-        -- Benzersiz art ve typ değerlerini birleştir
         STRING_AGG(art::TEXT, ',') AS lgb_art,  
         STRING_AGG(typ::TEXT, ',') AS lgb_typ    
-    FROM 
-        distinct_values
-    GROUP BY 
-        alkis_id, alkis_zae_id
+    FROM distinct_values
+    GROUP BY alkis_id, alkis_zae_id
 )
+
 SELECT * FROM matched_parcels
