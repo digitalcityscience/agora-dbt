@@ -75,7 +75,17 @@ SELECT
     CASE 
         WHEN g.x_grz IS NOT NULL THEN ROUND((b."Shape_Area" * (g.x_grz - g.grz_alkis))::numeric, 4)
         ELSE NULL
-    END AS grz_potential_area               -- Additional buildable area in m²
+    END AS grz_potential_area,               -- Additional buildable area in m²
+    -- Formatted Flurstück number based on FSKALB pattern
+    CASE 
+        WHEN b."FSKALB" IS NOT NULL THEN 
+        substr("FSKALB",0,3) || '/' || 
+        substr("FSKALB",3,4) || '/' ||  
+        substr("FSKALB",8,3) || '/' ||  
+        substr("FSKALB",12,5) || '/' ||
+        '0000'
+        ELSE b."FSKALB"
+    END AS flurst_nr                        -- Formatted parcel number
     
 FROM base b
 LEFT JOIN grz_core g ON b.parcel_uuid = g.parcel_uuid
