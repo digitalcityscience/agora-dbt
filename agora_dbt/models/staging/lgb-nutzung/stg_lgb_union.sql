@@ -1,6 +1,9 @@
 {{ config(
+    materialized='table',
     alias='stg_lgb_union',
-    materialized='view'
+    post_hook=[
+        "CREATE INDEX IF NOT EXISTS idx_lgb_geom_valid ON {{ this }} USING GIST(geom_valid)"
+    ]
 ) }}
 
 WITH lgb_union AS (
@@ -20,7 +23,7 @@ WITH lgb_union AS (
         'grundstuecksgleiche_rechte'
     ] %}
     {% for lgb_table in lgb_tables %}
-    SELECT * FROM {{ source(target.schema, lgb_table) }}
+    SELECT *, ST_MakeValid(geom) AS geom_valid FROM {{ source(target.schema, lgb_table) }}
     {% if not loop.last %} UNION ALL {% endif %}
     {% endfor %}
 )

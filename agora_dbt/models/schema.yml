@@ -1,11 +1,16 @@
+name: agora_dbt
 version: 2
 
+
 sources:
-   # This should match the schema name where your tables are located
-  - name: "{{ target.schema }}"
+  - name: public
     tables:
       - name: ALKIS_2023_Flurstuecke_Flaechen_parcels
       - name: parcel_test_west
+      - name: building_bbox_test_west
+      - name: ALKIS_Gebaeude_Bauteile_Flaechen_buildings
+      - name: xplan_test_west
+      - name: Xplanung_BaugebietsTeilFlaeche
       - name: verwaltungsvermoegen_gewaesser
       - name: landesbetriebe_gem_paragraph_26_lho
       - name: sonderverm_schulimmobilien

@@ -37,3 +37,74 @@ models:
         description: "Total area of the ALKIS parcel."
       - name: nutzart_values
         description: "Array of Nutzung categories associated with the parcel."
+  
+  - name: int_parcel_alkis_grz
+    description: >
+      Calculates GRZ (Grundflächenzahl) for each parcel using building intersection ratios and parcel areas. 
+      Only main buildings (excluding auxiliary types) are considered. Includes a list of building IDs contributing to GRZ.
+    columns:
+      - name: parcel_uuid
+        description: "Unique identifier of the ALKIS parcel"
+        tests:
+          - not_null
+          - unique
+
+      - name: grz_alkis
+        description: "Calculated GRZ value per parcel based on intersected building area ratio and parcel area"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "grz_alkis >= 0 AND grz_alkis <= 2"  # Optional sanity range
+
+      - name: buildings
+        description: "Array of building IDs that contribute to the GRZ calculation. Can be null or empty if no valid buildings intersect the parcel."
+
+  - name: int_parcel_xplannung
+    description: >
+      Associates each parcel with the corresponding xplanning geometry based on centroid containment.
+      Adds xplanung_id and planned GRZ (x_grz) for each parcel.
+    columns:
+      - name: parcel_uuid
+        description: "Unique identifier of the ALKIS parcel (from parcel_center_points)"
+        tests:
+          - not_null
+          - unique
+
+      - name: center_point
+        description: "Centroid of the parcel geometry transformed to EPSG:25832"
+        tests:
+          - not_null
+
+      - name: xplanung_id
+        description: "ID of the xplanning polygon containing the parcel's center point"
+        tests:
+          - not_null
+
+      - name: x_grz
+        description: "Planned GRZ value as defined in the xplanning geometry"
+  - name: int_lgb_old_version
+    description: "Intermediate table matching ALKIS parcels with LGB data based on geometric and attribute relationships."
+    columns:
+      - name: alkis_id
+        description: "Unique identifier for ALKIS parcels."
+        tests:
+          - not_null
+          - unique
+
+      - name: alkis_zae_id
+        description: "ZAE identifier from ALKIS used for matching with LGB."
+
+      - name: alkis_geom
+        description: "Geometry of the ALKIS parcel, validated using ST_MakeValid."
+
+      - name: alkis_area
+        description: "Parcel area in square meters, derived from Shape_Area."
+
+      - name: lgb_art
+        description: "Array of distinct LGB 'art' classifications assigned to the parcel."
+
+      - name: lgb_typ
+        description: "Array of distinct LGB 'typ' classifications assigned to the parcel."
+
+
+

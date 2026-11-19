@@ -37,3 +37,23 @@ models:
           - not_null
       - name: geom
         description: "Geometry of the Nutzung area."
+
+  - name: stg_parcel_center_points
+    description: "Each parcel represented by its UUID and the centroid of its geometry transformed to EPSG:25832."
+    columns:
+      - name: parcel_uuid
+        description: "Unique identifier for each ALKIS parcel."
+        tests:
+          - not_null
+          - unique
+      - name: center_point
+        description: "Centroid of the parcel geometry in EPSG:25832."
+        tests:
+          - not_null
+  - name: stg_poi_all
+    description: "All POI datasets merged and transformed to EPSG:25832"
+    columns:
+      - name: poi_type
+        description: "Type of the POI (e.g. airport, bus_stop, hospital, etc)"
+      - name: geom_25832
+        description: "Geometry transformed to EPSG:25832"

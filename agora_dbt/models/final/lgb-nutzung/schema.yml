@@ -76,3 +76,37 @@ models:
       - name: dist_train_station
         tests:
           - not_null
+  - name: final_parcel_grz_analysis
+    description: >
+      Final output for parcel-level GRZ analysis. Merges ALKIS parcel data, calculated GRZ (grz_alkis), 
+      planned GRZ from xplanning data (x_grz), and computes potential_grz. Includes list of building IDs 
+      contributing to the calculated GRZ.
+    columns:
+      - name: parcel_uuid
+        description: "Unique identifier for the parcel"
+        tests:
+          - not_null
+          - unique
+
+      - name: grz_alkis
+        description: "Calculated GRZ value based on actual building footprints intersecting each parcel"
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: "grz_alkis IS NULL OR (grz_alkis >= 0 AND grz_alkis <= 2)"
+
+      - name: grz_xplanung
+        description: "Planned GRZ value from xplanning polygon"
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: "x_grz IS NULL OR (x_grz >= 0 AND x_grz <= 2)"
+
+      - name: grz_potential
+        description: "Difference between planned GRZ (x_grz) and actual calculated GRZ (grz_alkis)"
+
+      - name: xplanung_id
+        description: "ID of the xplanning polygon that contains the parcel's center point"
+
+      - name: buildings
+        description: >
+          Array of building IDs that contributed to GRZ calculation.
+          May be NULL or empty if the parcel contains no intersecting buildings.
